@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.score {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.restart {
+    display: flex;
+    justify-content: center;
+}
+
+.winner {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+span {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#h-score {
+    color: blue;
+}
+
+#cpu-score {
+    color: red;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+button {
+    padding: 15px;
+}
+
+#rock {
+    background-color: grey;
+}
+
+#paper {
+    background-color: white;
+}
+
+#scissors {
+    background-color: lightcoral;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}

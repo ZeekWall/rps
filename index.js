@@ -1,20 +1,35 @@
 let humanScore = 0;
 let computerScore = 0;
 
-playGame();
+const hScoreItem = document.querySelector("#h-score");
+const cpuScoreItem = document.querySelector("#cpu-score");
 
-function playGame () {
-    while (true){
-        playRound(getHumanChoice(), getComputerChoice());
-        if(humanScore == 2){
-            console.log("Human wins best 2 out of 3!");
-            break;
-        } else if(computerScore == 2){
-            console.log("Computer wins best 2 out of 3!");
-            break;
-        }
-    }
-}
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors")
+
+const restartButton = document.querySelector("#restart");
+
+rockButton.addEventListener("click", () => playRound("rock", getComputerChoice()));
+paperButton.addEventListener("click", () => playRound("paper", getComputerChoice()));
+scissorsButton.addEventListener("click", () => playRound("scissors", getComputerChoice()));
+restartButton.addEventListener("click", () => playRound("restart", getComputerChoice()));
+
+const winner = document.querySelector(".winner")
+
+
+// function playGame () {
+//     while (true){
+//         playRound(getHumanChoice(), getComputerChoice());
+//         if(humanScore == 2){
+//             console.log("Human wins best 2 out of 3!");
+//             break;
+//         } else if(computerScore == 2){
+//             console.log("Computer wins best 2 out of 3!");
+//             break;
+//         }
+//     }
+// }
 
 
 function playRound(humanChoice, computerChoice) {
@@ -22,6 +37,9 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice == 'restart'){
         humanScore = 0;
         computerScore = 0;
+        hScoreItem.textContent = humanScore;
+        cpuScoreItem.textContent = computerScore;
+        winner.textContent = "Restarting game.."
         return console.log('Restating Game...')
     }
 
@@ -29,20 +47,29 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanChoice == 'rock' && computerChoice == 'scissors') {
         humanScore++;
+        hScoreItem.textContent = humanScore;
+        winner.textContent = "Human wins! CPU picked: " + computerChoice;
         console.log("Human Wins!   H:" + humanScore + "  C:" + computerScore);
 
     } else if (humanChoice == 'paper' && computerChoice == 'rock') {
         humanScore++;
+        hScoreItem.textContent = humanScore;
+        winner.textContent = "Human wins! CPU picked: " + computerChoice;
         console.log("Human Wins!   H:" + humanScore + "  C:" + computerScore);
 
     } else if (humanChoice == 'scissors' && computerChoice == 'paper') {
         humanScore++;
+        hScoreItem.textContent = humanScore;
+        winner.textContent = "Human wins! CPU picked: " + computerChoice;
         console.log("Human Wins!   H:" + humanScore + "  C:" + computerScore);
 
     } else if (humanChoice == computerChoice) {
         console.log("Tie!")
+        winner.textContent = "Tie! CPU also picked " + computerChoice
     } else {
         computerScore++;
+        cpuScoreItem.textContent = computerScore;
+        winner.textContent = "CPU wins! CPU picked: " + computerChoice;
         console.log("Computer Wins!   H:" + humanScore + "  C:" + computerScore);
 
     }
